@@ -65,6 +65,32 @@
 
 //OPTIMISED 
 
+var sortColors = function (arr) {
+    let low = 0;
+    let high = arr.length - 1;
+    let mid = 0;
+    while (mid <= high) {
+        
+        if (arr[mid] == 0) {
+            let temp = arr[mid]
+            arr[mid] = arr[low]
+            arr[low] = temp
+            // SWAP arr[mid]  with arr[low]
+            low++; mid++;
+        }else if (arr[mid] == 1) {
+            mid++;
+        }
+        else {
+            // SWAP arr[mid] with arr[high]
+            let temp2 = arr[mid]
+            arr[mid] = arr[high]
+            arr[high] = temp2
+            high--
+        }
+        
+    }
+}
+
 
 
 
@@ -72,8 +98,8 @@ const arr = [2, 0, 2, 1, 1, 0, 1]
 const arr2 = [1, 2, 1]
 const arr3 = [2, 0, 2, 1, 1, 0]
 sortColors(arr)
-sortColors(arr2)
-sortColors(arr3)
 console.log(arr)
+sortColors(arr2)
 console.log(arr2)
+sortColors(arr3)
 console.log(arr3)
