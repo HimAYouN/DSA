@@ -11,29 +11,22 @@ var maxProduct = function (nums) {
     let suffix = nums[n - 1];
     let best = nums[0]
 
-    maxCaller()
+    best = max(prefix, max(suffix, best))
     for (let i = 1; i < n; i++) {
         if (prefix == 0) prefix = 1
         if (suffix == 0) suffix = 1
 
         prefix = prefix * nums[i]
         suffix = suffix * nums[n - i - 1]
-        maxCaller()
+        best = max(prefix, max(suffix, best))
 
     }
     return best
 
-    function maxCaller() {
-        best = max(prefix, best)
-        best = max(suffix, best)
-    }
-
-    function max(a, b) {
-        if (a > b) return a
-        return b
-    }
 
 };
 
-
-
+function max(a, b) {
+        if (a > b) return a
+        return b
+    }
