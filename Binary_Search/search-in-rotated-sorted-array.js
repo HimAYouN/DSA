@@ -50,3 +50,37 @@ var search = function (arr, target) {
 
     return -1
 };
+
+
+var search_V2 = function (arr, target) {
+    let l = 0;
+    let r = arr.length - 1;
+    let mid = 0;
+
+    while(l<=r){
+        mid= parseInt((l+r)/2)
+        if(arr[mid]==target){
+            return mid
+        }
+            // Left half is sorted
+        if(arr[mid]>=arr[l]){
+            if(arr[mid]<target || target < arr[l]){
+                l=mid+1
+            }
+            else{
+                r=mid-1
+            }
+        }
+        //RIGHT half is sorted 
+        else{
+            if(target<arr[mid] || target>arr[r]){
+                r=mid-1
+            }
+            else{
+                l=mid+1
+            }
+        }
+    }
+
+    return -1
+};
